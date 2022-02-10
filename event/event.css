@@ -1,0 +1,52 @@
+body {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+body div {
+  width: 400px;
+  min-height: 200px;
+}
+
+body div:first-of-type {
+  border: 1px solid blue;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body div:first-of-type button {
+  width: 150px;
+  height: 50px;
+  font-size: 1.2rem;
+  border-radius: 5px;
+}
+
+body div:nth-of-type(2) {
+  border: 1px solid red;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body div:nth-of-type(2) p {
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.5rem;
+}
+/*# sourceMappingURL=event.css.map */
