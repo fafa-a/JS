@@ -31,6 +31,7 @@ const inputFirstName = document.getElementById("firstName")
 const inputPhone = document.getElementById("phone")
 const inputEmail = document.getElementById("email")
 const divInfo = document.getElementById("info")
+
 const error = function (el) {
   el.style.backgroundColor = "red"
 }
@@ -42,8 +43,8 @@ if (form) {
     const firstName = inputFirstName.value
     const phone = inputPhone.value
     const email = inputEmail.value
-    
-    const allInput = {
+
+    const allInputValue = {
       Nom: name,
       Prénom: firstName,
       Téléphone: phone,
@@ -78,9 +79,9 @@ if (form) {
 
     if (isNameValid && isFirstNameValid && isPhoneValid && isEmailValid) {
       divInfo.classList.add("success")
-      for (const key in allInput) {
+      for (const key in allInputValue) {
         const p = document.createElement("p")
-        p.textContent = `${key} : ${allInput[key]}`
+        p.textContent = `${key} : ${allInputValue[key]}`
         divInfo.appendChild(p)
       }
     }

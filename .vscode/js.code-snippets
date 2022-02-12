@@ -1,0 +1,49 @@
+{
+  // Place your JS workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and
+  // description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope
+  // is left empty or omitted, the snippet gets applied to all languages. The prefix is what is
+  // used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+  // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders.
+  // Placeholders with the same ids are connected.
+  // Example:
+  // "Print to console": {
+  // 	"scope": "javascript,typescript",
+  // 	"prefix": "log",
+  // 	"body": [
+  // 		"console.log('$1');",
+  // 		"$2"
+  // 	],
+  // 	"description": "Log output to console"
+  // }
+
+  "Console Log": {
+    "scope": "javascript,typescript",
+    "prefix": "cl",
+    "body": ["console.log($1);", "$2"],
+    "description": "Log output to console"
+  },
+  "Query Selector": {
+    "scope": "javascript,typescript",
+    "prefix": "ds",
+    "body": ["document.querySelector('$1');", "$2"],
+    "description": "Query for a DOM element"
+  },
+  "Query Selector All": {
+    "scope": "javascript,typescript",
+    "prefix": "dss",
+    "body": ["document.querySelectorAll('$1');", "$2"],
+    "description": "Query for a DOM element"
+  },
+  "Query Selector by Data Attribute": {
+    "scope": "javascript,typescript",
+    "prefix": "dsd",
+    "body": ["document.querySelector('[data-\"$1\"=\"$2\"]');", "$3"],
+    "description": "Query for a DOM element by data attribute"
+  },
+  "Query Selector All by Data Attribute": {
+    "scope": "javascript,typescript",
+    "prefix": "dssd",
+    "body": ["document.querySelector('[data-\"$1\"]');", "$2"],
+    "description": "Query for a DOM element by data attribute"
+  }
+}

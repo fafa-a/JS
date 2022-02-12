@@ -8,15 +8,15 @@ firstDiv.appendChild(secondButton)
 
 // first version
 const addEventToButton = function () {
-  firstButton.addEventListener("click", function () {
-    p.innerText = "Mon premier bouton fonctionne"
-  })
-  secondButton.addEventListener("click", function () {
-    p.innerText = "Mon second bouton fonctionne"
-  })
-  secondDiv.appendChild(p)
+    firstButton.addEventListener("click", function () {
+        p.innerText = "Mon premier bouton fonctionne"
+    })
+    secondButton.addEventListener("click", function () {
+        p.innerText = "Mon second bouton fonctionne"
+    })
+    secondDiv.appendChild(p)
 }
-
+addEventToButton()
 // second version
 // const addEventToButton = function () {
 //   const button = arguments[0] === "firstButton" ? firstButton : secondButton
