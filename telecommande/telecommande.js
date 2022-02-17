@@ -1,4 +1,5 @@
 const Telecommande = {
+    color: "black",
     getForm: function () {
         return document.getElementById("tableau")
     },
@@ -8,9 +9,16 @@ const Telecommande = {
     getCells: function () {
         return Array.from(this.getForm().getElementsByTagName("td"))
     },
+    getFilledCells: function () {
+        return this.getCells().filter(cell => cell.innerHTML != "")
+    },
     addId: function () {
-        this.getCells().forEach(cell => (cell.textContent = cell.id))
-        this.setColoredCellsLength(this.getColorChecked())
+        this.getCells().forEach(cell => {
+            cell.textContent = cell.id
+            cell.style.color = this.color
+            cell.style.fontWeight = "normal"
+        })
+        this.showAllCounter()
     },
     delAleatoire: function () {
         const halfTableCell = this.getCells().length / 2
@@ -20,16 +28,22 @@ const Telecommande = {
             )
             this.getCells()[randomCell].textContent = ""
         }
-        this.setColoredCellsLength(this.getColorChecked())
+        this.showAllCounter()
+    },
+    getEmptyCells: function () {
+        return this.getCells().filter(cell => cell.textContent === "")
     },
     firstCase: function () {
-        this.getCells()
-            .slice(0, 1)
-            .map(cell => {
-                cell.textContent = cell.id
-                cell.style.fontWeight = "bold"
-            })
-        this.setColoredCellsLength(this.getColorChecked())
+        if (this.getEmptyCells().length > 0) {
+            const firstCellEmpty = this.getEmptyCells()
+                .map(el => el.id)
+                .sort()[0]
+            const cell = this.getCells().find(el => el.id === firstCellEmpty)
+            cell.textContent = cell.id
+            cell.style.color = this.color
+            cell.style.fontWeight = "bold"
+        }
+        this.showAllCounter()
     },
     addIdDansVide: function () {
         this.getCells()
@@ -38,20 +52,26 @@ const Telecommande = {
                 cell.textContent = cell.id
                 cell.style.fontWeight = "bold"
             })
-        this.setColoredCellsLength(this.getColorChecked())
+        this.showAllCounter()
     },
     setColor: function (color) {
+        this.color = color
         this.getCells()
             .filter(cell => cell.textContent === "")
             .map(cell => (cell.style.color = color))
     },
-    setColoredCellsLength: function (color) {
-        console.log(color)
-
+    count: function (color) {
+        return this.getFilledCells().filter(cell => cell.style.color === color)
+            .length
+    },
+    showCounter: function (color) {
         const tdDisplayNumber = document.getElementById(`nb_${color}`)
-        tdDisplayNumber.textContent = this.getCells().filter(
-            cell => cell.style.color === color
-        ).length
+        tdDisplayNumber.textContent = this.count(color)
+    },
+    showAllCounter: function () {
+        document
+            .querySelectorAll('[id^="nb_"]')
+            .forEach(el => this.showCounter(el.id.slice(3)))
     },
     getColorChecked: function () {
         return document.querySelector('input[type="radio"]:checked').id
