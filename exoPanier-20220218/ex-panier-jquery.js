@@ -1,40 +1,34 @@
-const setOpacity = (tag, value) => $(tag).css({ opacity: value })
-const addNewRow = (id, value) => {
+const addNewOption = (id, value) => {
     const valueCapitalized = value.slice(0, 1).toUpperCase() + value.slice(1)
     $(`#${id}`).append(
         `<option value="${value.toLowerCase()}">${valueCapitalized}</option>`
     )
 }
-
-const deleteRow = (id, value) =>
+const deleteOption = (id, value) =>
     $(`#${id} option[value=${value.toLowerCase()}]`).remove()
 
-setOpacity("input[type=button]", 0.5)
+$("input[type='button']").prop("disabled", true)
 
 $("#liste_fruits option").click(function () {
-    setOpacity("input[id=ajouter]", 1)
-    let myFruits = this.text
-    $("input[id=ajouter]").click(function () {
-        if (myFruits) {
-            addNewRow("panier", myFruits)
-            deleteRow("liste_fruits", myFruits.toLowerCase())
-            setOpacity("input[type=button]", 0.5)
-        }
-        myFruits = ""
-    })
+    $("#ajouter").prop("disabled", false)
+})
+
+$("input[id=ajouter]").click(function () {
+    const value = $("#liste_fruits option:selected").text()
+    addNewOption("panier", value)
+    deleteOption("liste_fruits", value.toLowerCase())
+    $("#ajouter").prop("disabled", true)
 })
 
 $(document).on("change", function () {
     $("#panier option").click(function () {
-        setOpacity("input[id=supprimer]", 1)
-        let myFruits = this.text
-        $("input[id=supprimer]").click(function () {
-            if (myFruits) {
-                deleteRow("panier", myFruits.toLowerCase())
-                addNewRow("liste_fruits", myFruits)
-                setOpacity("input[type=button]", 0.5)
-            }
-            myFruits = ""
-        })
+        $("#supprimer").prop("disabled", false)
     })
+})
+
+$("input[id=supprimer]").click(function () {
+    const value = $("#panier option:selected").text()
+    deleteOption("panier", value.toLowerCase())
+    addNewOption("liste_fruits", value)
+    $("#supprimer").prop("disabled", true)
 })
