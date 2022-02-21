@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("span:first-of-type")
+          .mousenter(function () {
+            $(this)
+              .parent()
+              .append("<span>" + $(this).data("note") + "</span>")
+          })
+          .mouseleave(function () {
+            $(this).parent().find("span:last-of-type").remove()
+          })
+
+        $("span:nth-of-type(2)")
+          .mouseenter(function () {
+            $(this)
+              .parent()
+              .append("<span>" + $(this).data("note") + "</span>")
+          })
+          .mouseleave(function () {
+            $(this).parent().find("span:last-of-type").remove()
+          })
+      })
+    </script>
+  </head>
+  <body>
+    <div>
+      <h1>Offres d’emploi en alternance</h1>
+      <p>
+        La
+        <span data-note="Société Nationale des Chemins de Fer">SNCF</span>
+        recrute en contrat de professionnalisation pour la validation du Titre
+        <span data-note="Agent de Fabrication d’Éléments Métalliques"
+          >AFEM</span
+        >
+        spécialité Caténaires qui vous forme au métier d'opérateur de la
+        caténaire <span>(H/F)</span>.
+      </p>
+    </div>
+  </body>
+</html>
